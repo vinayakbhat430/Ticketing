@@ -3,6 +3,8 @@
 
     const route = express.Router();
 
+
+    //#Misake: Not using / in begining of the route which made me to spend lots of time to understand why i am not able to reach to the route
     route.post(
     "/api/users/signup",
     [
