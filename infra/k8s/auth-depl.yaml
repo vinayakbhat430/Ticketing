@@ -15,6 +15,10 @@ spec:
       containers:
       - name: ticketing-auth
         image: vinayakbhat430learn/ticketing-auth
+        resources:
+          limits:
+            memory: "2048Mi"
+            cpu: "1000m"
         env:
           - name: JWT_KEY
             valueFrom:

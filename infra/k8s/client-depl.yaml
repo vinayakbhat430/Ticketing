@@ -1,19 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ticketing-auth-monogo-depl
+  name: ticketing-client-depl
 spec:
+  replicas: 1
   selector:
     matchLabels:
-      app: ticketing-auth-mongo
+      app: ticketing-client
   template:
     metadata:
       labels:
-        app: ticketing-auth-mongo
+        app: ticketing-client
     spec:
       containers:
-      - name: ticketing-auth-mongo
-        image: mongo
+      - name: ticketing-client
+        image: vinayakbhat430learn/ticketing-client
         resources:
           limits:
             memory: "128Mi"
@@ -22,12 +23,12 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: auth-mongo-srv
+  name: ticketing-client-srv
 spec:
   selector:
-    app: ticketing-auth-mongo
+    app: ticketing-client
   ports:
-  - name: db
+  - name: ticketing-client
     protocol: TCP
-    port: 27017
-    targetPort: 27017
+    port: 3000
+    targetPort: 3000
