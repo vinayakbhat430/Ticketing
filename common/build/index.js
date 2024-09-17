@@ -20,6 +20,7 @@ __exportStar(require("./errors/database-connection-error"), exports);
 __exportStar(require("./errors/not-authorized-error"), exports);
 __exportStar(require("./errors/not-found-error"), exports);
 __exportStar(require("./errors/request-validation-error"), exports);
+__exportStar(require("./errors/interfaces"), exports);
 __exportStar(require("./middleware/current-user"), exports);
 __exportStar(require("./middleware/error-handler"), exports);
 __exportStar(require("./middleware/require-auth"), exports);
