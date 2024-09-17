@@ -1,15 +1,14 @@
 
+import cookieSession from 'cookie-session';
 import express from 'express';
 import 'express-async-errors';
-import cookieSession from 'cookie-session';
 
 
+import { errorHandler, NotFoundError } from '@vb430/common';
 import { CurrentUserRouter } from "./routes/current-user";
 import { SignInRouter } from "./routes/signin";
 import { SignOutRouter } from "./routes/signout";
 import { SignUpRouter } from "./routes/signup";
-import { errorHandler } from './middleware/error-handler';
-import { NotFoundError } from './errors/not-found-error';
 
 
 
@@ -40,4 +39,4 @@ app.all('*',async ()=>{
 app.use(errorHandler)
 
 
-export {app};
+export { app };

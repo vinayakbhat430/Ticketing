@@ -1,7 +1,5 @@
-import express  from "express";
-import Jwt  from "jsonwebtoken";
-import { CurrentUser } from "../middleware/current-user";
-import { requireAuth } from "../middleware/require-auth";
+import { CurrentUser, requireAuth } from "@vb430/common";
+import express from "express";
 
 const route = express.Router();
 
@@ -9,4 +7,4 @@ route.get('/api/users/current-user', CurrentUser, requireAuth ,(req,res)=>{
     res.send({currentUser: req.currentUser || null})
 });
 
-export {route as CurrentUserRouter};
+export { route as CurrentUserRouter };

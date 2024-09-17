@@ -1,10 +1,9 @@
 import express, { Request, Response } from "express";
 
-import  Jwt  from "jsonwebtoken";
+import { BadRequestError, validateRequest } from "@vb430/common";
 import { body } from "express-validator";
+import Jwt from "jsonwebtoken";
 import { User } from "../models/user";
-import { BadRequestError } from "../errors/bad-request-error";
-import { validateRequest } from "../middleware/validate-requests";
 
 const route = express.Router();
 
@@ -53,3 +52,4 @@ route.post(
 );
 
 export { route as SignUpRouter };
+

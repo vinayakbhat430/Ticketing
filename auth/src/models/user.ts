@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { UserAttrs } from "../../../common/src/errors/interfaces";
+import { UserAttrs } from "@vb430/common";
 import { Password } from "../libs/password";
 
 interface UserModel extends mongoose.Model<UserDoc> {
