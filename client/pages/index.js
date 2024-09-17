@@ -6,7 +6,6 @@ const LandingPage = ({currentUser}) => {
 
 LandingPage.getInitialProps = async (context) => {
     const { data } = await buildClient(context).get("/api/users/current-user")
-    console.log("\n response data",data)
     return data;
 };
 
