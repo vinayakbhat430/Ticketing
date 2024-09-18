@@ -3,10 +3,10 @@ import {app} from './app';
 
 const start = async () => {
     if(!process.env.JWT_KEY){
-        throw new Error('JWT_SECRET Must be defined')
+        throw new Error('JWT_SECRET Must be defined');
     }
     if(!process.env.MONGO_URI){
-        throw new Error('MONGO_URI Must be defined')
+        throw new Error('Mongo URI Must be defined');
     }
     try{
         await mongoose.connect(process.env.MONGO_URI);
@@ -16,7 +16,7 @@ const start = async () => {
         console.log(err)
     }
     app.listen(3000,()=>{
-        console.log("listening -> auth -> 3000");
+        console.log("listening -> tickets -> 3000");
     })
 }
 start();

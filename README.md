@@ -12,6 +12,9 @@ kubectl create secret generic jwt-secret --from-literal=JWT_KEY=asdf
 use above commands to know the service names and namespaces, and use them accordingly in the URL
 
 
+Learnt how to create account in the npmjs and publish own npm package
+
+
 
 
 

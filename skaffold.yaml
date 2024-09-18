@@ -12,6 +12,14 @@ build:
             src: src/**/*.ts
       docker:
         dockerfile: Dockerfile
+    - image: vinayakbhat430learn/ticketing-tickets
+      context: tickets
+      sync:
+        manual:
+          - dest: .
+            src: src/**/*.ts
+      docker:
+        dockerfile: Dockerfile
     - image: vinayakbhat430learn/ticketing-client
       context: client
       sync:
@@ -26,3 +34,5 @@ manifests:
     - infra/k8s/ingress-srv.yaml
     - infra/k8s/auth-mongo-depl.yaml
     - infra/k8s/client-depl.yaml
+    - infra/k8s/tickets-depl.yaml
+    - infra/k8s/tickets-mongo-depl.yaml
