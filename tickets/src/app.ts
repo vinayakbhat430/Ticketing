@@ -7,6 +7,7 @@ import 'express-async-errors';
 import { CurrentUser, errorHandler, NotFoundError } from '@vb430/common';
 import { CreateTicketRouter } from './routes/new';
 import { ShowTicket } from './routes/show';
+import { IndexTicketsRoute } from './routes';
 
 
 
@@ -29,6 +30,7 @@ app.use(CurrentUser)
 
 app.use(CreateTicketRouter)
 app.use(ShowTicket)
+app.use(IndexTicketsRoute)
 
 app.all('*',async ()=>{
     throw new NotFoundError()
