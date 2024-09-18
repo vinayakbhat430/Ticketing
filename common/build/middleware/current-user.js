@@ -16,6 +16,6 @@ const CurrentUser = (req, res, next) => {
     }
     catch (err) {
     }
-    next();
+    return next();
 };
 exports.CurrentUser = CurrentUser;
