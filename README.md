@@ -15,6 +15,11 @@ use above commands to know the service names and namespaces, and use them accord
 Learnt how to create account in the npmjs and publish own npm package
 
 
+Enable this command in order to expose the port from nats to outside world `kubectl port-forward nats-depl-5d6dc844bc-gjhhb 4222:4222`
+
+
+
+
 
 
 
