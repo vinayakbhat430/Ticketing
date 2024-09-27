@@ -13,7 +13,8 @@ stan.on('connect', async ()=>{
         await publisher.publish({
             id:'122',
             title:'ticket',
-            price:'20'
+            price:20,
+            userId:'vbhat430'
         })
     }
     catch(err){
