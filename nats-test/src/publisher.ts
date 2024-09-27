@@ -13,6 +13,7 @@ stan.on('connect', ()=>{
         id:'123'
     });
 
+
     stan.publish('ticket:created', data,() =>{
         console.log('Event Published')
     })
