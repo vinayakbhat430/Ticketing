@@ -6,7 +6,8 @@ export interface TicketCreatedEvent {
 }
 
 interface TicketsData{
-    id:string,
-    title:string,
-    price:string
+    id:string;
+    title:string;
+    price:number;
+    userId:string;
 }
