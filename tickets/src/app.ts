@@ -8,6 +8,7 @@ import { CurrentUser, errorHandler, NotFoundError } from '@vb430/common';
 import { CreateTicketRouter } from './routes/new';
 import { ShowTicket } from './routes/show';
 import { IndexTicketsRoute } from './routes';
+import { UpdateTicketRouter } from './routes/update';
 
 
 
@@ -29,6 +30,7 @@ app.use(
 app.use(CurrentUser)
 
 app.use(CreateTicketRouter)
+app.use(UpdateTicketRouter)
 app.use(ShowTicket)
 app.use(IndexTicketsRoute)
 
