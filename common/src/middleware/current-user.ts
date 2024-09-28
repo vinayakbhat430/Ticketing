@@ -25,5 +25,5 @@ export const CurrentUser = (req:Request, res:Response, next:NextFunction) =>{
 
     }
 
-    return next();
+    next();
 }

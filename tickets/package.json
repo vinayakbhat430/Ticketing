@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "ts-node-dev src/index.ts",
-    "test": "jest --watchAll --no-cache"
+    "test": "jest --watchAll --no-cache --verbose --runInBand --detectOpenHandles"
   },
   "jest": {
     "preset": "ts-jest",
@@ -21,7 +21,7 @@
     "@types/express": "^4.17.21",
     "@types/jsonwebtoken": "^9.0.6",
     "@types/mongoose": "^5.11.97",
-    "@vb430/common": "^1.0.5",
+    "@vb430/common": "^1.0.6",
     "cookie-session": "^2.1.0",
     "express": "^4.19.2",
     "express-async-errors": "^3.1.1",
