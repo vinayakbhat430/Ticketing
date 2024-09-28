@@ -9,8 +9,17 @@ const start = async () => {
     if(!process.env.MONGO_URI){
         throw new Error('Mongo URI Must be defined');
     }
+    if(!process.env.NATS_CLIENT_ID){
+        throw new Error('Nats client Id Must be defined');
+    }
+    if(!process.env.NATS_URL){
+        throw new Error('NATS URL Must be defined');
+    }
+    if(!process.env.NATS_CLUSTER_ID){
+        throw new Error('NATS Cluster Id Must be defined');
+    }
     try{
-        await natsWrapper.connect('ticketing', '1234','http://nats-srv:4222/' );
+        await natsWrapper.connect(process.env.NATS_CLUSTER_ID, process.env.NATS_CLIENT_ID,process.env.NATS_URL );
         natsWrapper.client.on('close',()=>{
             console.log('NATS connection closed!');
             process.exit();

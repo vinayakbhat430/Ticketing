@@ -3,7 +3,6 @@ import { app } from '../../app';
 import { Ticket } from "../../models/tickets";
 import mongoose from "mongoose";
 
-jest.mock('../../nats-wrapper');
 
 it('it returns 404 if ticket is not found', async ()=> {
     const id = '66f69e28e493c683c7eb622d';

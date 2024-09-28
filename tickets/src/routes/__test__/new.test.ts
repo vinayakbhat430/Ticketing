@@ -1,8 +1,7 @@
 import  request from "supertest";
 import { app } from "../../app";
 import { Ticket } from "../../models/tickets";
-
-jest.mock('../../nats-wrapper');
+import { natsWrapper } from "../../nats-wrapper";
 
 it('has a route handler listening to /api/tickets for post requests', async ()=>{
     const response = await request(app)
@@ -77,3 +76,26 @@ it('Creates ticket with valid inputs', async () => {
     expect(tickets[0].title).toEqual(ticketData.title);
     expect(tickets[0].price).toEqual(ticketData.price);
   }, 60000); // Increase timeout to 60 seconds
+
+  it('publishes an event' , async ()=>{
+    const ticketData = {
+      title: 'Test Ticket',
+      price: 20
+    };
+  
+    const agent = request(app);
+    const cookie = global.signin();
+  
+    try {
+      const response = await agent
+        .post('/api/tickets')
+        .set('Cookie', cookie)
+        .send(ticketData)
+        .timeout(5000); // Set a timeout for the request itself
+      expect(response.status).toBe(201);
+    } catch (error) {
+      throw error;
+    }
+
+    expect(natsWrapper.client.publish).toHaveBeenCalled()
+  })
