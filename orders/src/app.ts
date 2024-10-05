@@ -5,11 +5,10 @@ import 'express-async-errors';
 
 
 import { CurrentUser, errorHandler, NotFoundError } from '@vb430/common';
-import { CreateTicketRouter } from './routes/new';
-import { ShowTicket } from './routes/show';
-import { IndexTicketsRoute } from './routes';
-
-
+import { IndexOrderRouter } from './routes/index';
+import { DeleteOrderRouter } from './routes/delete';
+import { NewOrderRouter } from './routes/new';
+import { ShowOrderRouter } from './routes/show';
 
 
 const app = express()
@@ -25,9 +24,14 @@ app.use(
 )
 
 
+
 //declare routes here
 app.use(CurrentUser)
 
+app.use(IndexOrderRouter)
+app.use(NewOrderRouter)
+app.use(DeleteOrderRouter)
+app.use(ShowOrderRouter)
 
 app.all('*',async ()=>{
     throw new NotFoundError()
