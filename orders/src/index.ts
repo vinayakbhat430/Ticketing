@@ -1,7 +1,8 @@
 import mongoose from 'mongoose';
 import {app} from './app';
 import { natsWrapper } from './nats-wrapper';
-
+import { TicketCreatedListener } from './events/listeners/tickets-created-listener';
+import { TicketUpdatedListener } from './events/listeners/ticket-updated-listener';
 const start = async () => {
     if(!process.env.JWT_KEY){
         throw new Error('JWT_SECRET Must be defined');
@@ -23,7 +24,10 @@ const start = async () => {
         natsWrapper.client.on('close',()=>{
             console.log('NATS connection closed!');
             process.exit();
-        })
+        });
+
+        new TicketCreatedListener(natsWrapper.client).listen()
+        new TicketUpdatedListener(natsWrapper.client).listen()
 
         process.on('SIGINT', () => natsWrapper.client.close())
         process.on('SIGTERM', () => natsWrapper.client.close())
