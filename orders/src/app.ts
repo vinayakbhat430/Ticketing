@@ -28,10 +28,10 @@ app.use(
 //declare routes here
 app.use(CurrentUser)
 
-app.use(IndexOrderRouter)
 app.use(NewOrderRouter)
-app.use(DeleteOrderRouter)
+app.use(IndexOrderRouter)
 app.use(ShowOrderRouter)
+app.use(DeleteOrderRouter)
 
 app.all('*',async ()=>{
     throw new NotFoundError()

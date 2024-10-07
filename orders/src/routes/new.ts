@@ -8,7 +8,7 @@ import { OrderCreatedPublisher } from "../events/order-created-publisher";
 import { natsWrapper } from "../nats-wrapper";
 const router = express.Router();
 
-const EXPIRATION_WINDOW_TIME = 15 * 60;
+const EXPIRATION_WINDOW_TIME = 1 * 60;
 
 router.post(
   "/api/orders",
@@ -46,6 +46,8 @@ router.post(
         ticket: ticket
         
     })
+
+    await order.save()
 
     //publish an event saying order was created
     new OrderCreatedPublisher(natsWrapper.client).publish({
