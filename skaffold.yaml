@@ -36,6 +36,14 @@ build:
             src: src/**/*.ts
       docker:
         dockerfile: Dockerfile
+    - image: vinayakbhat430learn/ticketing-payments
+      context: payments
+      sync:
+        manual:
+          - dest: .
+            src: src/**/*.ts
+      docker:
+        dockerfile: Dockerfile
     - image: vinayakbhat430learn/ticketing-client
       context: client
       sync:
@@ -57,3 +65,5 @@ manifests:
     - infra/k8s/orders-mongo-depl.yaml
     - infra/k8s/expiration-depl.yaml
     - infra/k8s/expiration-redis-depl.yaml
+    - infra/k8s/payments-depl.yaml
+    - infra/k8s/payments-mongo-depl.yaml

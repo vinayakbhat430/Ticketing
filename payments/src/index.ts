@@ -1,10 +1,10 @@
 import mongoose from 'mongoose';
 import {app} from './app';
 import { natsWrapper } from './nats-wrapper';
-import { TicketCreatedListener } from './events/listeners/tickets-created-listener';
-import { TicketUpdatedListener } from './events/listeners/ticket-updated-listener';
-import { ExpirationCompleteListener } from './events/listeners/expiration-complete-listener';
-import { PaymentCreatedListener } from './events/listeners/payment-created-listener';
+import { OrderCancelledListener } from './events/listeners/order-cancelled-listener';
+import { OrderCreatedListener } from './events/listeners/order-created-listener';
+
+
 const start = async () => {
     if(!process.env.JWT_KEY){
         throw new Error('JWT_SECRET Must be defined');
@@ -26,12 +26,10 @@ const start = async () => {
         natsWrapper.client.on('close',()=>{
             console.log('NATS connection closed!');
             process.exit();
-        });
+        })
 
-        new TicketCreatedListener(natsWrapper.client).listen();
-        new TicketUpdatedListener(natsWrapper.client).listen();
-        new ExpirationCompleteListener(natsWrapper.client).listen();
-        new PaymentCreatedListener(natsWrapper.client).listen();
+        new OrderCancelledListener(natsWrapper.client).listen();
+        new OrderCreatedListener(natsWrapper.client).listen();
 
         process.on('SIGINT', () => natsWrapper.client.close())
         process.on('SIGTERM', () => natsWrapper.client.close())
@@ -42,7 +40,7 @@ const start = async () => {
         console.log(err)
     }
     app.listen(3000,()=>{
-        console.log("listening -> orders -> 3000");
+        console.log("listening -> Payments -> 3000");
     })
 }
 start();

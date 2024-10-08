@@ -14,6 +14,10 @@ export class ExpirationCompleteListener extends Listener<ExpirationCompletedEven
             throw new NotFoundError();
         }
 
+        if(order.status === OrderStatus.Completed){
+            return message.ack()
+        }
+
         order.set({
             status: OrderStatus.Cancelled,
         })
@@ -22,6 +26,7 @@ export class ExpirationCompleteListener extends Listener<ExpirationCompletedEven
 
         await new OrderCancelledPublisher(this.client).publish({
             id: order.id,
+            version: order.version,
             ticket:{
                 id: order.ticket.id
             }
