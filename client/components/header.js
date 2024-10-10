@@ -1,8 +1,10 @@
-import Link from "next/link"
+import Link from "next/link";
 
 export default ({currentUser}) => {
     console.log(currentUser);
     const  links = [
+        currentUser && { label:'Sell ticket' , href:'/tickets/new'},
+        currentUser && { label:'My orders', href:'/orders'},
         currentUser && {label:'Sign out',href: '/auth/signout'},
         !currentUser && {label:'Sign in',href: '/auth/signin'},
         !currentUser && {label:'Sign up',href: '/auth/signup'},
@@ -10,7 +12,7 @@ export default ({currentUser}) => {
     ]
     .filter(linkConfig => linkConfig)
     .map(({label,href})=>{
-        return <li key={href} className="nav-item">
+        return <li key={href} className="nav-item nav-items">
             <Link href={href}>{label}</Link>
             </li>
     })
