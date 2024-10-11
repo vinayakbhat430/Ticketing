@@ -10,12 +10,8 @@ const CurrentUser = (req, res, next) => {
     if (!((_a = req.session) === null || _a === void 0 ? void 0 : _a.jwt)) {
         return next();
     }
-    try {
-        const payload = jsonwebtoken_1.default.verify(req.session.jwt, process.env.JWT_KEY);
-        req.currentUser = payload;
-    }
-    catch (err) {
-    }
+    const payload = jsonwebtoken_1.default.verify(req.session.jwt, process.env.JWT_KEY);
+    req.currentUser = payload;
     next();
 };
 exports.CurrentUser = CurrentUser;
