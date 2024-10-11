@@ -1,4 +1,4 @@
-import { BadRequestError, NotAuthorizedError, NotFoundError, requireAuth } from '@vb430/common';
+import { BadRequestError, NotAuthorizedError, NotFoundError, requireAuth, validateRequest } from '@vb430/common';
 import express , { Request, Response } from 'express';
 import { Ticket } from '../models/tickets';
 import { body } from 'express-validator';
@@ -16,7 +16,9 @@ router.put('/api/tickets/:id',
           .isFloat({ gt: 0 })
           .withMessage("Price must be greater than 0"),
     ],
+    validateRequest,
     async (req:Request, res:Response)=>{
+    console.log("Current User inside update",req.currentUser)
     const ticket = await Ticket.findById(req.params.id)
 
     if(!ticket){
