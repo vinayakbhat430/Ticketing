@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { NotFoundError, OrderStatus, requireAuth, validateRequest } from "@vb430/common";
+import { BadRequestError, NotFoundError, OrderStatus, requireAuth, validateRequest } from "@vb430/common";
 import express, { Request, Response } from "express";
 import { body } from "express-validator";
 import { Ticket } from "../models/ticket";
@@ -31,7 +31,7 @@ router.post(
     //make sure that ticket is not already reserved
     const isReserved = await ticket.isReserved();
     if(isReserved){
-        throw new Error('Ticket is reserved');
+        throw new BadRequestError('Ticket is reserved');
     }
 
     //calculate and expiration date for order
@@ -49,6 +49,7 @@ router.post(
 
     await order.save()
 
+
     //publish an event saying order was created
     new OrderCreatedPublisher(natsWrapper.client).publish({
         id: order.id,
@@ -62,7 +63,7 @@ router.post(
         }
     })
 
-    res.send(order);
+    res.status(201).send(order);
   }
 );
 

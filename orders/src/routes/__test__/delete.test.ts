@@ -5,6 +5,7 @@ import { Ticket } from '../../models/ticket';
 import { Order } from '../../models/order';
 import { OrderStatus } from '@vb430/common';
 import { natsWrapper } from '../../nats-wrapper';
+import { body } from 'express-validator';
 
 it('marks an order as cancelled', async () => {
   // create a ticket with Ticket Model
@@ -17,7 +18,7 @@ it('marks an order as cancelled', async () => {
 
   const user = global.signin();
   // make a request to create an order
-  const { body: order } = await request(app)
+  const {body : order}  = await request(app)
     .post('/api/orders')
     .set('Cookie', user)
     .send({ ticketId: ticket.id })
