@@ -2,12 +2,8 @@
 import cookieSession from 'cookie-session';
 import express from 'express';
 import 'express-async-errors';
-
-
 import { CurrentUser, errorHandler, NotFoundError } from '@vb430/common';
 import { CreateChargeRouter } from './routes/new';
-
-
 
 
 
