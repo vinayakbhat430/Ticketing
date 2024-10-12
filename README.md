@@ -1,3 +1,92 @@
+# Key Learnings
+
+## 1. Building Microservices Applications
+Expertise in architecting scalable microservices-based applications to ensure modularity and maintainability.
+
+---
+
+## 2. Implementing Event-Driven Architectures
+Leveraged event-driven systems for seamless communication between services, improving responsiveness and decoupling dependencies.
+
+---
+
+## 3. Distributed Authentication
+Passed login credentials securely across services, ensuring consistent authentication and authorization flows throughout the application.
+
+---
+
+## 4. Optimizing MongoDB Data Models
+Designed and optimized MongoDB schemas for efficient data storage and retrieval, ensuring high performance at scale.
+
+---
+
+## 5. Utilizing Mongoose for Transactions
+Leveraged Mongoose to manage MongoDB interactions, including complex transactional operations.
+
+---
+
+## 6. Service Synchronization with NATS Streaming
+Synchronized microservices using NATS streaming to ensure reliable data communication between distributed systems.
+
+---
+
+## 7. Integrating Stripe Payments
+Integrated Stripe for secure, efficient payment processing, enhancing the application's financial capabilities.
+
+---
+
+## 8. Kubernetes Configuration
+Wrote Kubernetes deployment and service configuration files for seamless container orchestration and application scaling.
+
+---
+
+## 9. Docker and Kubernetes Fundamentals
+Proficient in Docker for containerization and Kubernetes for orchestrating containerized applications in production environments.
+
+---
+
+## 10. Cross-Service Data Replication
+Implemented cross-service data replication strategies to ensure data consistency across microservices.
+
+---
+
+## 11. Reusable Code through Custom NPM Libraries
+Created and shared reusable code by building custom NPM libraries, enhancing code maintainability and reducing duplication.
+
+---
+
+## 12. Automated Testing with JEST
+Implemented robust unit and integration tests using JEST to ensure high code quality and prevent regressions.
+
+---
+
+## 13. DigitalOcean Application Deployment
+Deployed applications to DigitalOcean using Kubernetes, ensuring high availability and ease of scaling.
+
+---
+
+## 14. Automated PR Testing
+Automated the testing process to run whenever a pull request is created, ensuring code stability before merging.
+
+---
+
+## 15. CI/CD with Docker Hub
+Created Docker images and pushed them to Docker Hub, streamlining continuous integration and deployment processes.
+
+---
+
+## 16. Rolling Updates with Kubernetes
+Managed Kubernetes deployments to roll out updates with zero downtime, ensuring smooth application transitions.
+
+---
+
+## 17. Application Hosting on DigitalOcean Kubernetes
+Used DigitalOcean Kubernetes for efficient hosting and scaling of microservices applications.
+
+---
+
+
+
 ### Command to set the secret (Object creation without yaml)
 
 ```bash
